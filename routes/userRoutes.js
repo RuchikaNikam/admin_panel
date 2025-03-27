@@ -1,8 +1,13 @@
 const express = require("express");
-const { getUsers } = require("../controllers/userController");
-
 const router = express.Router();
+const userController = require("../controllers/userController");
 
-router.get("/users", getUsers);
+// Homepage Route (Fix for 404)
+router.get("/", (req, res) => {
+    res.send("<h1>Welcome to Admin Panel</h1>"); // Or render an EJS file
+});
+
+// Users Page Route
+router.get("/users", userController.getUsersPage);
 
 module.exports = router;
